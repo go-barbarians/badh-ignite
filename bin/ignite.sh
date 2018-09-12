@@ -59,7 +59,7 @@ fi
 #
 . "${SCRIPTS_HOME}"/include/setenv.sh
 . "${SCRIPTS_HOME}"/include/build-classpath.sh # Will be removed in the binary release.
-CP="${IGNITE_LIBS}"
+CP="${IGNITE_LIBS}:${IGNITE_CUSTOM_CLASSPATH}"
 
 RANDOM_NUMBER=$("$JAVA" -cp "${CP}" org.apache.ignite.startup.cmdline.CommandLineRandomNumberGenerator)
 

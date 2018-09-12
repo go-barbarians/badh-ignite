@@ -610,7 +610,7 @@ public abstract class IgniteHadoopFileSystemAbstractSelfTest extends IgfsCommonA
 
         GridTestUtils.assertThrows(log, new Callable<Object>() {
             @Override public Object call() throws Exception {
-                return fs.open(path, 256);
+                return fs.open((Path)path, 256);
             }
         }, IOException.class, "File system is stopped.");
 
@@ -1072,7 +1072,7 @@ public abstract class IgniteHadoopFileSystemAbstractSelfTest extends IgfsCommonA
     public void testOpenCheckParametersPathIsNull() throws Exception {
         GridTestUtils.assertThrows(log, new Callable<Object>() {
             @Override public Object call() throws Exception {
-                return fs.open(null, 1024);
+                return fs.open((Path)null, 1024);
             }
         }, NullPointerException.class, "Ouch! Argument cannot be null: f");
     }

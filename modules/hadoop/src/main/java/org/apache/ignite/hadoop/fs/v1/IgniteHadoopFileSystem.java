@@ -205,6 +205,10 @@ public class IgniteHadoopFileSystem extends FileSystem {
         this.colocateFileWrites = colocateFileWrites;
     }
 
+    @Override public String getScheme() {
+       return "igfs";
+    }
+
     /** {@inheritDoc} */
     @SuppressWarnings("ConstantConditions")
     @Override public void initialize(URI name, Configuration cfg) throws IOException {
@@ -284,7 +288,8 @@ public class IgniteHadoopFileSystem extends FileSystem {
 
     /** {@inheritDoc} */
     @Override protected void checkPath(Path path) {
-        URI uri = path.toUri();
+        super.checkPath(path);
+/*        URI uri = path.toUri();
 
         if (uri.isAbsolute()) {
             if (!F.eq(uri.getScheme(), IGFS_SCHEME))
@@ -294,7 +299,7 @@ public class IgniteHadoopFileSystem extends FileSystem {
             if (!F.eq(uri.getAuthority(), uriAuthority))
                 throw new InvalidPathException("Wrong path authority [expected=" + uriAuthority + ", actual=" +
                     uri.getAuthority() + ']');
-        }
+        }*/
     }
 
     /** {@inheritDoc} */

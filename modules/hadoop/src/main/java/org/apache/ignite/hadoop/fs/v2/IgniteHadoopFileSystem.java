@@ -159,6 +159,10 @@ public class IgniteHadoopFileSystem extends AbstractFileSystem implements Closea
     /** Prefer local writes. */
     private boolean preferLocFileWrites;
 
+    public String getScheme() {
+       return "igfs";
+    }
+
     /**
      * @param name URI for file system.
      * @param cfg Configuration.
