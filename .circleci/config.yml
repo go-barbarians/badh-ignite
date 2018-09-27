@@ -30,7 +30,7 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: mvn install package dependency:go-offline -Prelease -Dignite.edition=hadoop -DskipTests -Dhadoop.version=2.8.4
+      - run: mvn install package dependency:go-offline -Prelease -Dignite.edition=hadoop -DskipTests -Dhadoop.version=2.8.4 -Dzookeeper.version=3.5.5-badh1
 
       - save_cache:
           paths:
