@@ -41,6 +41,6 @@ jobs:
       # - run: mvn test -Prelease -Dignite.edition=hadoop -DskipTests -Dhadoop.version=2.8.4
 
       - store_artifacts:
-          path: /home/circleci/repo/target/bin/apache-ignite-hadoop-2.5.0-SNAPSHOT-bin.zip
+          path: /home/circleci/repo/target/bin/apache-ignite-hadoop-2.6.0-badh1-bin.zip
           destination: badh-ignite-bin
 
