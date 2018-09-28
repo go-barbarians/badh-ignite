@@ -45,7 +45,7 @@ jobs:
       - run: mvn install:install-file -Dfile=/tmp/zookeeper-$ZK_BUILD_NUMBER-test.jar -DgroupId=org.apache.zookeeper -DartifactId=zookeeper -Dversion=$ZK_BUILD_NUMBER -Dclassifier=tests -Dpackaging=test-jar
       - run: aws s3 cp --recursive s3://mvn.barbarians.io/hadoop/m2 ~/.m2
 
-      - run: mvn install package dependency:go-offline -Prelease -Dignite.edition=hadoop -DskipTests -Dhadoop.version=$HADOOP_BUILD_NUMBER -Dzookeeper.version=$ZK_BUILD_NUMBER -Dignite.version=$IGNITE_BUILD_NUMBER
+      - run: mvn clean install package dependency:go-offline -Prelease -Dignite.edition=hadoop -DskipTests -Dhadoop.version=$HADOOP_BUILD_NUMBER -Dzookeeper.version=$ZK_BUILD_NUMBER -Dignite.version=$IGNITE_BUILD_NUMBER
 
       - save_cache:
           paths:
@@ -56,7 +56,7 @@ jobs:
       # - run: mvn test -Prelease -Dignite.edition=hadoop -DskipTests -Dhadoop.version=2.8.4
 
       - run: aws s3 cp --recursive ~/.m2 s3://mvn.barbarians.io/ingite/m2
-      - run: aws s3 cp /root/repo/hadoop-dist/target/ignite-hadoop-$IGNITE_BUILD_NUMBER-bin.zip s3://mvn.barbarians.io
+      - run: aws s3 cp /root/repo/target/bin/apache-ignite-hadoop-$IGNITE_BUILD_VERSION-bin.zip s3://mvn.barbarians.io
 
       #- store_artifacts:
       #    path: /home/circleci/repo/target/bin/apache-ignite-hadoop-2.6.0-badh1-bin.zip
