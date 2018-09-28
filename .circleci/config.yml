@@ -52,13 +52,6 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
         
-      # run tests!
-      # - run: mvn test -Prelease -Dignite.edition=hadoop -DskipTests -Dhadoop.version=2.8.4
-
-      - run: aws s3 cp --recursive ~/.m2 s3://mvn.barbarians.io/ingite/m2
-      - run: aws s3 cp /root/repo/target/bin/apache-ignite-hadoop-$IGNITE_BUILD_VERSION-bin.zip s3://mvn.barbarians.io
-
-      #- store_artifacts:
-      #    path: /home/circleci/repo/target/bin/apache-ignite-hadoop-2.6.0-badh1-bin.zip
-      #    destination: badh-ignite-bin
+      - run: aws s3 cp --recursive ~/.m2 s3://mvn.barbarians.io/ignite/m2
+      - run: aws s3 cp /root/repo/target/bin/apache-ignite-hadoop-$IGNITE_BUILD_NUMBER-bin.zip s3://mvn.barbarians.io
 
