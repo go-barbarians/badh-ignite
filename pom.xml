@@ -36,6 +36,8 @@
     <packaging>pom</packaging>
 
     <properties>
+
+        <ignite.version>2.6.0-badh1</ignite.version>
         <!--fix <attachartifact>...< /> at apache-release profile if changed-->
         <ignite.zip.pattern>${project.artifactId}-${ignite.edition}-${project.version}-bin</ignite.zip.pattern>
     </properties>
