@@ -47,10 +47,10 @@ jobs:
 
       - run: mvn clean install package dependency:go-offline -Prelease -Dignite.edition=hadoop -DskipTests -Dhadoop.version=$HADOOP_BUILD_NUMBER -Dzookeeper.version=$ZK_BUILD_NUMBER -Dignite.version=$IGNITE_BUILD_NUMBER
 
-      - save_cache:
-          paths:
-            - ~/.m2
-          key: v1-dependencies-{{ checksum "pom.xml" }}
+      #- save_cache:
+      #    paths:
+      #      - ~/.m2
+      #    key: v1-dependencies-{{ checksum "pom.xml" }}
         
       - run: aws s3 cp --recursive ~/.m2 s3://mvn.barbarians.io/ignite/m2
       - run: aws s3 cp /root/repo/target/bin/apache-ignite-hadoop-$IGNITE_BUILD_NUMBER-bin.zip s3://mvn.barbarians.io
