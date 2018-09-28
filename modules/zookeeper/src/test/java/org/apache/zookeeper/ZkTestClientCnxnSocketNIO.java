@@ -74,7 +74,7 @@ public class ZkTestClientCnxnSocketNIO extends ClientCnxnSocketNIO {
      * @throws IOException If failed.
      */
     public ZkTestClientCnxnSocketNIO() throws IOException {
-        super();
+        super(new org.apache.zookeeper.client.ZKClientConfig());
 
         String threadName = Thread.currentThread().getName();
 
