@@ -32,7 +32,7 @@
     </parent>
 
     <artifactId>ignite-extdata-uri</artifactId>
-    <version>2.6.0-badh1</version>
+    <version>${ignite.version}</version>
 
     <dependencies>
         <dependency>
