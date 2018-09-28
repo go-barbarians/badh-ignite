@@ -31,7 +31,7 @@
     </parent>
 
     <artifactId>ignite-extdata-p2p</artifactId>
-    <version>${ignite.version}</version>
+    <version>2.6.0-badh1</version>
 
     <dependencies>
         <dependency>
