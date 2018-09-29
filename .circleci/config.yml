@@ -20,7 +20,7 @@ jobs:
       # Customize the JVM maximum heap limit
       MAVEN_OPTS: -Xmx3200m
       ZK_BUILD_NUMBER: 3.5.5-badh1
-      HADOOP_BUILD_NUMBER: 2.8.4-badh1
+      HADOOP_BUILD_NUMBER: 3.1.2-badh1
       IGNITE_BUILD_NUMBER: 2.6.0-badh1
     
     steps:
