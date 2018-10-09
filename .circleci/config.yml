@@ -28,12 +28,14 @@ jobs:
 
       - checkout
 
+      - run: rm -rf ~/.m2
+
       # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "pom.xml" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+      #- restore_cache:
+      #    keys:
+      #    - v1-dependencies-{{ checksum "pom.xml" }}
+      #    # fallback to using the latest cache if no exact match is found
+      #    - v1-dependencies-
 
       - run: apt-get install -y maven openjdk-8-jdk python-pip
       - run: pip install awscli
@@ -48,12 +50,12 @@ jobs:
       - run: aws s3 cp --recursive s3://mvn.barbarians.io/hadoop/m2 ~/.m2
       # - run: tar -xzf /tmp/m2.tar.gz
 
-      - run: mvn clean install package dependency:go-offline -Prelease -DskipTests -Dhadoop.version=$HADOOP_BUILD_NUMBER -Dzookeeper.version=$ZK_BUILD_NUMBER -Dignite.version=$IGNITE_BUILD_NUMBER
+      - run: mvn clean package dependency:go-offline -Prelease -DskipTests -Dhadoop.version=$HADOOP_BUILD_NUMBER -Dzookeeper.version=$ZK_BUILD_NUMBER -Dignite.version=$IGNITE_BUILD_NUMBER
 
-      - save_cache:
-          paths:
-            - ~/.m2
-          key: v1-dependencies-{{ checksum "pom.xml" }}
+      #- save_cache:
+      #    paths:
+      #      - ~/.m2
+      #    key: v1-dependencies-{{ checksum "pom.xml" }}
 
       - run: aws s3 cp /root/repo/target/bin/apache-ignite-fabric-$IGNITE_BUILD_NUMBER-bin.zip s3://mvn.barbarians.io
 
