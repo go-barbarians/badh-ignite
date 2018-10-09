@@ -55,7 +55,7 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
-      - run: aws s3 cp /root/repo/target/bin/apache-ignite-hadoop-$IGNITE_BUILD_NUMBER-bin.zip s3://mvn.barbarians.io
+      - run: aws s3 cp /root/repo/target/bin/apache-ignite-fabric-$IGNITE_BUILD_NUMBER-bin.zip s3://mvn.barbarians.io
 
       #- run: pushd ~; tar -czf m2.tar.gz -C /tmp ~/.m2; popd
       - run: aws s3 cp --recursive ~/.m2 s3://mvn.barbarians.io/ignite/m2
