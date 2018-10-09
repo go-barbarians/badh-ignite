@@ -50,7 +50,7 @@ jobs:
       - run: aws s3 cp --recursive s3://mvn.barbarians.io/hadoop/m2 ~/.m2
       # - run: tar -xzf /tmp/m2.tar.gz
 
-      - run: mvn clean package dependency:go-offline -Prelease -DskipTests -Dhadoop.version=$HADOOP_BUILD_NUMBER -Dzookeeper.version=$ZK_BUILD_NUMBER -Dignite.version=$IGNITE_BUILD_NUMBER
+      - run: mvn clean package dependency:go-offline -Prelease,all-java -DskipTests -Dhadoop.version=$HADOOP_BUILD_NUMBER -Dzookeeper.version=$ZK_BUILD_NUMBER -Dignite.version=$IGNITE_BUILD_NUMBER
 
       #- save_cache:
       #    paths:
