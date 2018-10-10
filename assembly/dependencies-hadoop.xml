@@ -36,6 +36,7 @@
                 <include>org.apache.ignite:ignite-spring</include>
                 <include>org.apache.ignite:ignite-log4j</include>
                 <include>org.apache.ignite:ignite-indexing</include>
+                <include>org.apache.ignite:ignite-zookeeper</include>
             </includes>
             <sources>
                 <includeModuleDirectory>true</includeModuleDirectory>
@@ -116,6 +117,7 @@
         <moduleSet>
             <includes>
                 <include>org.apache.ignite:ignite-hadoop</include>
+                <include>org.apache.ignite:ignite-zookeeper</include>
             </includes>
             <sources>
                 <includeModuleDirectory>true</includeModuleDirectory>
