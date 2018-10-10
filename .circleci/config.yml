@@ -50,16 +50,16 @@ jobs:
       - run: aws s3 cp --recursive s3://mvn.barbarians.io/hadoop/m2 ~/.m2
       # - run: tar -xzf /tmp/m2.tar.gz
 
-      - run: mvn clean package dependency:go-offline -Prelease,all-java -DskipTests -Dhadoop.version=$HADOOP_BUILD_NUMBER -Dzookeeper.version=$ZK_BUILD_NUMBER -Dignite.version=$IGNITE_BUILD_NUMBER
+      - run: mvn clean package dependency:go-offline -Prelease,all-java -DskipTests -Dignite.edition=hadoop -Dhadoop.version=$HADOOP_BUILD_NUMBER -Dzookeeper.version=$ZK_BUILD_NUMBER -Dignite.version=$IGNITE_BUILD_NUMBER
 
       #- save_cache:
       #    paths:
       #      - ~/.m2
       #    key: v1-dependencies-{{ checksum "pom.xml" }}
 
-      - run: aws s3 cp /root/repo/target/bin/apache-ignite-fabric-$IGNITE_BUILD_NUMBER-bin.zip s3://mvn.barbarians.io
+      - run: aws s3 cp /root/repo/target/bin/apache-ignite-hadoop-$IGNITE_BUILD_NUMBER-bin.zip s3://mvn.barbarians.io
 
-      #- run: pushd ~; tar -czf m2.tar.gz -C /tmp ~/.m2; popd
-      - run: aws s3 cp --recursive ~/.m2 s3://mvn.barbarians.io/ignite/m2
+      - run: pushd ~; tar -czf m2.tar.gz ~/.m2; popd
+      - run: aws s3 cp ~/.m2.tar.gz s3://mvn.barbarians.io/ignite/m2.tar.gz
 
 
